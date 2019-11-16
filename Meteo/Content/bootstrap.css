@@ -12,6 +12,7 @@ html {
 body {
   margin: 0;
   text-align: justify;
+  font-size:large;
 }
 article,
 aside,
@@ -45,6 +46,9 @@ template {
 }
 a {
   background-color: transparent;
+}
+p {
+    font-size:larger;
 }
 a:active,
 a:hover {
@@ -5879,7 +5883,7 @@ button.list-group-item-danger.active:focus {
   overflow: hidden;
 }
 .embed-responsive .embed-responsive-item,
-.embed-responsive iframe,
+.embed-responsive iframe 
 .embed-responsive embed,
 .embed-responsive object,
 .embed-responsive video {
