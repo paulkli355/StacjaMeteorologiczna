@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Meteo.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,21 +9,23 @@ namespace Meteo.Controllers
 {
     public class HomeController : Controller
     {
+        private PomiaryContext db = new PomiaryContext();
         public ActionResult Index()
         {
+
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "";
 
             return View();
         }
