@@ -11,6 +11,7 @@ html {
 }
 body {
   margin: 0;
+  text-align: justify;
 }
 article,
 aside,
@@ -66,6 +67,7 @@ dfn {
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
+  text-align: center;
 }
 mark {
   background: #ff0;
@@ -89,6 +91,7 @@ sub {
 }
 img {
   border: 0;
+  width: 100%;
 }
 svg:not(:root) {
   overflow: hidden;
@@ -112,7 +115,9 @@ samp {
   font-family: monospace, monospace;
   font-size: 1em;
 }
-button,
+button {
+    float: right;
+}
 input,
 optgroup,
 select,
