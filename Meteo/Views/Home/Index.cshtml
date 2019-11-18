@@ -2,12 +2,12 @@
     ViewBag.Title = "Strona główna";
 }
 
-<script src="index.css" ></script>
+<script src="index.css"></script>
 
 <h1>Witaj na AirControll!</h1>
 <img id="air" src="https://cdn.pixabay.com/photo/2016/09/04/20/14/sunset-1645105_960_720.jpg">
 
-<h2>Sprawdź jakość powietrza w Twojej okolicy</h2>
+<h3>Sprawdź jakość powietrza w Twojej okolicy</h3>
 <p>
     <ul>
         <li>Temperatura: 12 [°C]</li>
@@ -23,6 +23,7 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
 <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
 
 <script>
     Highcharts.chart('container', {
@@ -67,7 +68,7 @@
             marker: {
                 symbol: 'square'
             },
-            data: [25.2, 21.5, 18.2, 14.7, 9.5, 6.9, 4.0,  {
+            data: [25.2, 21.5, 18.2, 14.7, 9.5, 6.9, 4.0, {
                 y: 5.5,
             }, 6.3, 10.3, 13.9, 19.6]
 
@@ -78,7 +79,7 @@
             },
             data: [{
                 y: 3.9,
-                
+
             }, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
         }, {
             name: 'PM1',
@@ -87,7 +88,7 @@
             },
             data: [{
                 y: 8.4,
-                
+
             }, 1.2, 3.4, 7.3, 9.4, 11.2, 13.9, 15.8, 18.9, 10.3, 7.6, 3.8]
         }]
     });
