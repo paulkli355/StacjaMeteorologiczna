@@ -10,7 +10,7 @@ namespace Meteo.DAL
 {
     public class PomiaryContext : DbContext
     {
-        public PomiaryContext() : base("PmiaryContext") 
+        public PomiaryContext() : base("PomiaryContext") 
         { 
 
         }

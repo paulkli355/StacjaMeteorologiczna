@@ -148,7 +148,6 @@ C:\Users\user\StacjaMeteorologiczna\Meteo\bin\System.Web.WebPages.Razor.xml
 C:\Users\user\StacjaMeteorologiczna\Meteo\bin\Newtonsoft.Json.xml
 C:\Users\user\StacjaMeteorologiczna\Meteo\bin\Antlr3.Runtime.pdb
 C:\Users\user\StacjaMeteorologiczna\Meteo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\user\StacjaMeteorologiczna\Meteo\obj\Debug\Meteo.csprojAssemblyReference.cache
 C:\Users\user\StacjaMeteorologiczna\Meteo\obj\Debug\Meteo.csproj.CopyComplete
 C:\Users\user\StacjaMeteorologiczna\Meteo\obj\Debug\Meteo.dll
 C:\Users\user\StacjaMeteorologiczna\Meteo\obj\Debug\Meteo.pdb
