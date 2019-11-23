@@ -151,3 +151,4 @@ C:\Users\user\StacjaMeteorologiczna\Meteo\bin\Microsoft.CodeDom.Providers.DotNet
 C:\Users\user\StacjaMeteorologiczna\Meteo\obj\Debug\Meteo.csproj.CopyComplete
 C:\Users\user\StacjaMeteorologiczna\Meteo\obj\Debug\Meteo.dll
 C:\Users\user\StacjaMeteorologiczna\Meteo\obj\Debug\Meteo.pdb
+C:\Users\user\StacjaMeteorologiczna\Meteo\obj\Debug\Meteo.csprojAssemblyReference.cache
