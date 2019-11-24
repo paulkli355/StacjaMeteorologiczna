@@ -15,8 +15,6 @@ namespace MeteoWF
         public generateReport()
         {
             InitializeComponent();
-            label1.Text = DateTime.Now.ToString();
-
         }
 
         private void label_Click(object sender, EventArgs e)
@@ -29,9 +27,9 @@ namespace MeteoWF
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Printbutton_Click(object sender, EventArgs e)
         {
-           
+            MessageBox.Show("This feature is not yet available! We are working on it", "We're sorry", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -28,12 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.Reportgeneration = new System.Windows.Forms.Label();
             this.Printbutton = new System.Windows.Forms.Button();
-            this.datetime = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Reportgeneration
@@ -55,31 +51,12 @@
             this.Printbutton.TabIndex = 3;
             this.Printbutton.Text = "Print";
             this.Printbutton.UseVisualStyleBackColor = true;
-            // 
-            // datetime
-            // 
-            this.datetime.AutoSize = true;
-            this.datetime.Location = new System.Drawing.Point(26, 385);
-            this.datetime.Name = "datetime";
-            this.datetime.Size = new System.Drawing.Size(0, 13);
-            this.datetime.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(43, 384);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Today is";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.Printbutton.Click += new System.EventHandler(this.Printbutton_Click);
             // 
             // generateReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.datetime);
             this.Controls.Add(this.Printbutton);
             this.Controls.Add(this.Reportgeneration);
             this.Name = "generateReport";
@@ -94,8 +71,5 @@
 
         private System.Windows.Forms.Label Reportgeneration;
         private System.Windows.Forms.Button Printbutton;
-        private System.Windows.Forms.Label datetime;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Label label1;
     }
 }

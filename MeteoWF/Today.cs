@@ -26,5 +26,10 @@ namespace MeteoWF
         {
 
         }
+
+        private void TempWar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

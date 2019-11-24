@@ -14,7 +14,6 @@ namespace MeteoWF
     {
         public home()
         {
-            //timer1.Start();
             InitializeComponent();
             dashboard1.BringToFront();
             
@@ -87,9 +86,6 @@ namespace MeteoWF
             generateReport1.BringToFront();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

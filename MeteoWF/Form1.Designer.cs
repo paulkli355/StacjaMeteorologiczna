@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(home));
             this.sidepanel = new System.Windows.Forms.Panel();
             this.reportbutton = new System.Windows.Forms.Button();
@@ -43,7 +42,6 @@
             this.closePic = new System.Windows.Forms.PictureBox();
             this.openNowlabel = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lastWeek1 = new MeteoWF.lastWeek();
             this.today1 = new MeteoWF.Today();
             this.dashboard1 = new MeteoWF.dashboard();
@@ -212,10 +210,6 @@
             this.openNowlabel.Text = "Dashbord";
             this.openNowlabel.Click += new System.EventHandler(this.label2_Click);
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // lastWeek1
             // 
             this.lastWeek1.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -281,7 +275,6 @@
         private System.Windows.Forms.Panel logopanel;
         private System.Windows.Forms.Label appname;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox iconpic;
         private System.Windows.Forms.Button dashbutton;
         private System.Windows.Forms.Button reportbutton;
