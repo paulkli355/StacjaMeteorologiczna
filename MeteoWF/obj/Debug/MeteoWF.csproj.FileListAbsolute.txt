@@ -1,0 +1,9 @@
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\bin\Debug\MeteoWF.exe.config
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\bin\Debug\MeteoWF.exe
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\bin\Debug\MeteoWF.pdb
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\obj\Debug\MeteoWF.csprojAssemblyReference.cache
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\obj\Debug\MeteoWF.Properties.Resources.resources
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\obj\Debug\MeteoWF.csproj.GenerateResource.cache
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\obj\Debug\MeteoWF.exe
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\obj\Debug\MeteoWF.pdb
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\obj\Debug\MeteoWF.home.resources
