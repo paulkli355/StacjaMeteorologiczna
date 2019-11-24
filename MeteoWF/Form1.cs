@@ -14,12 +14,16 @@ namespace MeteoWF
     {
         public home()
         {
+            //timer1.Start();
             InitializeComponent();
+            dashboard1.BringToFront();
+            
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -39,22 +43,27 @@ namespace MeteoWF
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            openNowlabel.Text = "Dashboard";
+            dashboard1.BringToFront();
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            openNowlabel.Text = "Last week";
+            lastWeek1.BringToFront();
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            openNowlabel.Text = "Today";
+            today1.BringToFront();
         }
 
         private void label2_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -70,6 +79,17 @@ namespace MeteoWF
         private void minimisePic_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void reportbutton_Click(object sender, EventArgs e)
+        {
+            openNowlabel.Text = "Generate report";
+            generateReport1.BringToFront();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

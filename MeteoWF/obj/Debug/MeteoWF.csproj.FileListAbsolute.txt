@@ -7,3 +7,8 @@ C:\Users\user\StacjaMeteorologiczna\MeteoWF\obj\Debug\MeteoWF.csproj.GenerateRes
 C:\Users\user\StacjaMeteorologiczna\MeteoWF\obj\Debug\MeteoWF.exe
 C:\Users\user\StacjaMeteorologiczna\MeteoWF\obj\Debug\MeteoWF.pdb
 C:\Users\user\StacjaMeteorologiczna\MeteoWF\obj\Debug\MeteoWF.home.resources
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\obj\Debug\MeteoWF.Form2.resources
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\obj\Debug\MeteoWF.Today.resources
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\obj\Debug\MeteoWF.dashboard.resources
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\obj\Debug\MeteoWF.lastWeek.resources
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\obj\Debug\MeteoWF.generateReport.resources
