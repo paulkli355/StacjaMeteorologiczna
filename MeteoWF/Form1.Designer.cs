@@ -205,9 +205,9 @@
             this.openNowlabel.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.openNowlabel.Location = new System.Drawing.Point(24, 26);
             this.openNowlabel.Name = "openNowlabel";
-            this.openNowlabel.Size = new System.Drawing.Size(127, 30);
+            this.openNowlabel.Size = new System.Drawing.Size(143, 30);
             this.openNowlabel.TabIndex = 0;
-            this.openNowlabel.Text = "Dashbord";
+            this.openNowlabel.Text = "Dashboard";
             this.openNowlabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // lastWeek1
