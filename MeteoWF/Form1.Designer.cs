@@ -235,6 +235,7 @@
             // 
             // generateReport1
             // 
+            this.generateReport1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.generateReport1.Location = new System.Drawing.Point(195, 69);
             this.generateReport1.Name = "generateReport1";
             this.generateReport1.Size = new System.Drawing.Size(687, 439);
