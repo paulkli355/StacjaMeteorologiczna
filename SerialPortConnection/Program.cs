@@ -5,118 +5,120 @@ using System.Threading;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-//using System.Windows.Forms;
-//using MySql.Data.MySqlClient;
+using System.Threading.Tasks;
+
 
 namespace SerialPortConnection
 {
     class Program
     {
+     
         // kolejnosc w lancuchu 
         //PM1 ; PM25 ; PM10 ; temperatura ; wilgotnosc
         static SerialPort _serialPort;
         static void Main(string[] args)
         {
             _serialPort = new SerialPort();
-            _serialPort.PortName = "COM7";
+            _serialPort.PortName = "COM6";
             _serialPort.BaudRate = 9600;
-
-            string pm1;
-            string pm25;
-            string pm10;
-            string temp;
-            string wilg; 
+ 
             _serialPort.Open();
-            try
+            
+            string answer;
+            string[] wartosci;
+
+            for (; ; )
             {
-                for (int i = 0; i < 2; i++)
+
+                for (; ; )
                 {
-                    string answer = "34;56;76;27,8;56,9;";
-                    //string  = _serialPort.ReadExisting();
-                    string[] wartosci = answer.Split(';');
-                    Console.WriteLine(answer);
-                    for (int j = 0; j < wartosci.Length; j++)
-                    {
-                    Console.WriteLine(wartosci[j]);
-                    Console.WriteLine(answer);
-                    }
-                    pm1 = wartosci[0];
-                    pm25 = wartosci[1];
-                    pm10 = wartosci[2];
-                    temp = wartosci[3];
-                    wilg = wartosci[4];
-                    Thread.Sleep(1000);
+                    
+                    Thread.Sleep(600);
+                    answer = _serialPort.ReadExisting();
+                    wartosci = answer.Split(';');
+                    Console.WriteLine("");
+                    if (wartosci.Length > 5)
+                        break;
                 }
-                
 
+                int pm1;
+                int pm25;
+                int pm10;
+                int temp;
+                int wilg;
 
-                //_serialPort.Open();
-                //while (true)
-                //{
-                //    string answer = _serialPort.ReadExisting();
-                //    string[] wartosci = answer.Split(';');
-                //    Console.WriteLine(answer);
-                //    for (int i = 0; i < wartosci.Length; i++)
-                //    {
-                //        Console.WriteLine(wartosci[i]);
-                //    }
-                //    //pm1[0] = wartosci[0];
-                //    //pm25[0] = wartosci[1];
-                //    //pm10[0] = wartosci[2];
-                //    //temp[0] = wartosci[3];
-                //    //wilg[0] = wartosci[4];
+                pm1 = int.Parse(wartosci[0]);
+                pm25 = int.Parse(wartosci[1]);
+                pm10 = int.Parse(wartosci[2]);
+                temp = int.Parse(wartosci[3]);
+                wilg = int.Parse(wartosci[4]);
+                //Thread.Sleep(1000);
 
-
-
-                //    Thread.Sleep(15000);
-                //}
+                Console.WriteLine("pm1: {0}",pm1);
+                Console.WriteLine("pm25: {0}", pm25);
+                Console.WriteLine("pm10: {0}", pm10);
+                Console.WriteLine("temp: {0}", temp);
+                Console.WriteLine("wilg: {0}", wilg);
 
             }
-            catch (IOException e)
-            {
-                Console.WriteLine(e.GetType().Name + ": Port nie gotowy!");
-            }
-            finally
-            {
-                Console.Read();
-            }
 
+            ////SQL Connection 
+            //try
+            //{
+            //    string connecting = "datasource=DELL/PAULINA;port=3306;username=sa;password=paulina1";
+            //    string Query = "insert into database.MeteoDB(PomiarID, Kategoria,DataCzas,Wartosc) values()";
 
+            //    SqlConnection polaczenie = new SqlConnection(@"Data source=DELL\PAULINA;
+            //                                                 database=MeteoDB;
+            //                                                 User id=sa;
+            //                                                 Password=paulina1;");
 
+            //    polaczenie.Open();
+            //    SqlCommand komendaSQL = polaczenie.CreateCommand();
+            //    komendaSQL.CommandText = "SELECT * FROM adres";
+            //    SqlDataReader czytnik = komendaSQL.ExecuteReader();
 
-            //SQL Connection 
-            try
-            {
-                string connecting = "datasource=DELL/PAULINA;port=3306;username=sa;password=paulina1";
-                string Query = "insert into database.MeteoDB(PomiarID, Kategoria,DataCzas,Wartosc) values()";
-               
-                SqlConnection polaczenie = new SqlConnection(@"Data source=DELL\PAULINA;
-                                                             database=MeteoDB;
-                                                             User id=sa;
-                                                             Password=paulina1;");
+            //    Console.WriteLine("Wiersze tabeli:");
+            //    while (czytnik.Read())
+            //    {
+            //        Console.WriteLine(czytnik["nazwisko"].ToString() + "   " + czytnik["imie"].ToString() + "   " + czytnik["adres"].ToString() + "   " + czytnik["kodp"].ToString() + "   " + czytnik["poczta"].ToString());
+            //    }
+            //    czytnik.Close();
+            //    polaczenie.Close();
 
-                polaczenie.Open();
-                SqlCommand komendaSQL = polaczenie.CreateCommand();
-                komendaSQL.CommandText = "SELECT * FROM adres";
-                SqlDataReader czytnik = komendaSQL.ExecuteReader();
+            //    Console.ReadKey();
+            //}
 
-                Console.WriteLine("Wiersze tabeli:");
-                while (czytnik.Read())
-                {
-                    Console.WriteLine(czytnik["nazwisko"].ToString() + "   " + czytnik["imie"].ToString() + "   " + czytnik["adres"].ToString() + "   " + czytnik["kodp"].ToString() + "   " + czytnik["poczta"].ToString());
-                }
-                czytnik.Close();
-                polaczenie.Close();
+            //catch (SqlException e)
+            //{
+            //    Console.WriteLine("Wystąpił nieoczekiwany błąd!");
+            //    Console.WriteLine(e.Message);
+            //    Console.ReadKey();
+            //}
+        }
 
-                Console.ReadKey();
-            }
+        void SaveToSQL()
+        {
+            //DateTime czas = DateTime.Now;
+            //string constring = "Data Source=DELL/PAULINA;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            //SqlConnection conection = new SqlConnection(constring);
+            //conection.Open();
+            //string Query = "insert into Użytkownik.dbo.Rejestracja(UserName,Password,FirstName,LastName,Weight,Height,Sex) values ('" + pm1 + "','" + pm25 + "','" + pm10 + "','" + temp + "', '" + wilg+ "', '"')";
 
-            catch (SqlException e)
-            {
-                Console.WriteLine("Wystąpił nieoczekiwany błąd!");
-                Console.WriteLine(e.Message);
-                Console.ReadKey();
-            }
+            //SqlCommand cmd = new SqlCommand(Query, conection);
+            //int i = cmd.ExecuteNonQuery();
+
+            //if (i != 0)
+            //{
+            //    Console.WriteLine("Saved");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Error has occured!");
+            //}
+
+            
+            
         }
 
     }
