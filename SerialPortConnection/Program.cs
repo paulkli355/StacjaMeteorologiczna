@@ -27,8 +27,8 @@ namespace SerialPortConnection
             
             string answer;
             string[] wartosci;
-            //using (PomiaryContext context = new PomiaryContext())
-            //{
+            using (PomiaryContext context = new PomiaryContext())
+            {
                 for (; ; )
                 {
 
@@ -49,12 +49,6 @@ namespace SerialPortConnection
                     double temp;
                     double wilg;
 
-                    Console.WriteLine("pm1: {0}", wartosci[0]);
-                    Console.WriteLine("pm25: {0}", wartosci[1]);
-                    Console.WriteLine("pm10: {0}", wartosci[2]);
-                    Console.WriteLine("temp: {0}", wartosci[3]);
-                    Console.WriteLine("wilg: {0}", wartosci[4]);
-
                     pm1 = double.Parse(wartosci[0]);
                     pm25 = double.Parse(wartosci[1]);
                     pm10 = double.Parse(wartosci[2]);
@@ -70,17 +64,19 @@ namespace SerialPortConnection
 
 
                     //INSERT to MeteoDB database
-                    //Pomiary pomiar = new Pomiary
-                    //{
-                    //    DataCzas = DateTime.Now,
-                    //    PM1 = pm1,
-                    //    PM25 = pm25,
-                    //    PM10 = pm10,
-                    //    Temperatura = temp,
-                    //    Wilgotnosc = wilg
-                    //};
-                    //context.Pomiaries.Add(pomiar);
-                    //context.SaveChanges();
+                    Pomiary pomiar = new Pomiary
+                    {
+                        DataCzas = DateTime.Now,
+                        PM1 = pm1,
+                        PM25 = pm25,
+                        PM10 = pm10,
+                        Temperatura = temp,
+                        Wilgotnosc = wilg
+                    };
+                    context.Pomiaries.Add(pomiar);
+                    context.SaveChanges();
+
+                    //Thread.Sleep(900000);         //uspienie zapisu na 15 min
 
                     //SELECT from MeteoDB database
                     //Pomiary pomiar2 = context.Pomiaries.FirstOrDefault(x => x.Temperatura >= 0);
@@ -99,7 +95,7 @@ namespace SerialPortConnection
 
 
                 }
-            //}
+            }
         }
 
     }
