@@ -1,5 +1,4 @@
-﻿using Meteo.DAL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,7 +8,7 @@ namespace Meteo.Controllers
 {
     public class HomeController : Controller
     {
-        private PomiaryContext db = new PomiaryContext();
+        
         public ActionResult Index()
         {
 
