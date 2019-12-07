@@ -26,7 +26,9 @@
 
 
 <script>
-    Highcharts.chart('container', {
+    $(document).ready(function () {
+         $.getJSON("/Home/GetData", function (data) {
+        Highcharts.chart('container', {
         chart: {
             type: 'spline'
         },
@@ -91,5 +93,8 @@
 
             }, 1.2, 3.4, 7.3, 9.4, 11.2, 13.9, 15.8, 18.9, 10.3, 7.6, 3.8]
         }]
-    });
+        });
+        });
+        console.log("ready!");
+    });   
 </script>
