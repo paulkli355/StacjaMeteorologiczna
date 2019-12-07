@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 
 namespace MeteoWF
 {
     public partial class home : Form
     {
+        MeteoDBEntities context = new MeteoDBEntities();
         public home()
         {
             InitializeComponent();
@@ -49,7 +52,7 @@ namespace MeteoWF
 
         private void button3_Click(object sender, EventArgs e)
         {
-            openNowlabel.Text = "Last week";
+            openNowlabel.Text = "Historic data";
             lastWeek1.BringToFront();
             
         }

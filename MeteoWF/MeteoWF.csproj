@@ -94,6 +94,24 @@
     <Compile Include="lastWeek.Designer.cs">
       <DependentUpon>lastWeek.cs</DependentUpon>
     </Compile>
+    <Compile Include="MeteoModel1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MeteoModel1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MeteoModel1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MeteoModel1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MeteoModel1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MeteoModel1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Pomiary.cs">
+      <DependentUpon>MeteoModel1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Today.cs">
@@ -126,6 +144,13 @@
     <EmbeddedResource Include="Today.resx">
       <DependentUpon>Today.cs</DependentUpon>
     </EmbeddedResource>
+    <EntityDeploy Include="MeteoModel1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MeteoModel1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MeteoModel1.edmx.diagram">
+      <DependentUpon>MeteoModel1.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -139,6 +164,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MeteoModel1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MeteoModel1.edmx</DependentUpon>
+      <LastGenOutput>MeteoModel1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MeteoModel1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MeteoModel1.edmx</DependentUpon>
+      <LastGenOutput>MeteoModel1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
