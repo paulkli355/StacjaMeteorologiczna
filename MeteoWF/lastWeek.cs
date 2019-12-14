@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using MindFusion.Charting;
+using MindFusion.Charting.WinForms;
 namespace MeteoWF
 {
     public partial class lastWeek : UserControl
@@ -16,7 +17,8 @@ namespace MeteoWF
         public lastWeek()
         {
             InitializeComponent();
-            WyswietlWykresSlupkowy();
+            //WyswietlWykresSlupkowy();
+            WyswietlWykresLiniowy();
         }
 
         private void lastWeek_Load(object sender, EventArgs e)
@@ -54,6 +56,12 @@ namespace MeteoWF
 
         void WyswietlWykresSlupkowy()
         {
+            chart1.Update();
+            chart1.Series["PM1"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            chart1.Series["PM2.5"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            chart1.Series["PM10"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+
+
             var srednia1 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Year == 2019).Average(x => x.PM1), 2);
             var srednia25 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Year == 2019).Average(x => x.PM25), 2);
             var srednia10 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Year == 2019).Average(x => x.PM10), 2);
@@ -61,27 +69,40 @@ namespace MeteoWF
             this.chart1.Series["PM2.5"].Points.AddXY(" ", srednia25);
             this.chart1.Series["PM10"].Points.AddXY(" ", srednia10);
 
+            
+
         }
 
         void WyswietlWykresLiniowy()
         {
+            chart1.Series["PM1"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series["PM2.5"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            chart1.Series["PM10"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+
+
+            var pm1 = context.Pomiaries.Select(x => x.PM1).ToArray();
+            var pm25 = context.Pomiaries.Select(x => x.PM25).ToArray();
+            var pm10 = context.Pomiaries.Select(x => x.PM10).ToArray();
+
+       
+            this.chart1.Series["PM1"].Points.DataBindY(pm1);
+            this.chart1.Series["PM2.5"].Points.DataBindY(pm25);
+            this.chart1.Series["PM10"].Points.DataBindY(pm10);
 
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox2.Checked == true)
+            if (checkBox1.Checked == true)
             {
-                chart1.Series["PM1"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-                chart1.Series["PM2.5"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-                chart1.Series["PM10"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                WyswietlWykresSlupkowy();
             }
             else
             {
-                chart1.Series["PM1"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-                chart1.Series["PM2.5"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
-                chart1.Series["PM10"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                WyswietlWykresLiniowy();
             }
         }
+
+        
     }
 }

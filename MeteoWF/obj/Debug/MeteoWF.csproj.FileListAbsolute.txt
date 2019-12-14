@@ -25,3 +25,13 @@ C:\Users\user\StacjaMeteorologiczna\MeteoWF\bin\Debug\EntityFramework.dll
 C:\Users\user\StacjaMeteorologiczna\MeteoWF\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\user\StacjaMeteorologiczna\MeteoWF\bin\Debug\EntityFramework.xml
 C:\Users\user\StacjaMeteorologiczna\MeteoWF\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\bin\Debug\MindFusion.Charting.dll
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\bin\Debug\MindFusion.Charting.WinForms.dll
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\bin\Debug\MindFusion.Common.dll
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\bin\Debug\MindFusion.Gauges.dll
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\bin\Debug\MindFusion.Licensing.dll
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\bin\Debug\MindFusion.Scripting.dll
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\bin\Debug\MindFusion.Svg.dll
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\bin\Debug\MindFusion.Pdf.dll
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\bin\Debug\MindFusion.Charting.xml
+C:\Users\user\StacjaMeteorologiczna\MeteoWF\bin\Debug\MindFusion.Charting.WinForms.xml
