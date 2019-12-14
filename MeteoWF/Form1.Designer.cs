@@ -98,7 +98,7 @@
             this.weekbutton.Name = "weekbutton";
             this.weekbutton.Size = new System.Drawing.Size(195, 51);
             this.weekbutton.TabIndex = 4;
-            this.weekbutton.Text = "Last week  ";
+            this.weekbutton.Text = "  Historic data";
             this.weekbutton.UseVisualStyleBackColor = true;
             this.weekbutton.Click += new System.EventHandler(this.button3_Click);
             // 

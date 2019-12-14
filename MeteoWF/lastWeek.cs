@@ -16,6 +16,7 @@ namespace MeteoWF
         public lastWeek()
         {
             InitializeComponent();
+            WyswietlWykresSlupkowy();
         }
 
         private void lastWeek_Load(object sender, EventArgs e)
@@ -51,25 +52,35 @@ namespace MeteoWF
 
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        void WyswietlWykresSlupkowy()
         {
-            if (checkBox1.Checked == true)
+            var srednia1 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Year == 2019).Average(x => x.PM1), 2);
+            var srednia25 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Year == 2019).Average(x => x.PM25), 2);
+            var srednia10 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Year == 2019).Average(x => x.PM10), 2);
+            this.chart1.Series["PM1"].Points.AddXY(" ", srednia1);
+            this.chart1.Series["PM2.5"].Points.AddXY(" ", srednia25);
+            this.chart1.Series["PM10"].Points.AddXY(" ", srednia10);
+
+        }
+
+        void WyswietlWykresLiniowy()
+        {
+
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked == true)
             {
-                var srednia1 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 7).Average(x => x.PM1), 2);
-                var srednia25 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 7).Average(x => x.PM25), 2);
-                var srednia10 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 7).Average(x => x.PM10), 2);
-                this.chart1.Series["PM1"].Points.AddXY("1.12.", srednia1);
-                this.chart1.Series["PM2.5"].Points.AddXY("1.12.", srednia25);
-                this.chart1.Series["PM10"].Points.AddXY("1.12.", srednia10);
-
-                var sr1 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 6).Average(x => x.PM1), 2);
-                var sr25 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 6).Average(x => x.PM25), 2);
-                var sr10 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 6).Average(x => x.PM10), 2);
-                this.chart1.Series["PM1"].Points.AddXY("2.12.", sr1);
-                this.chart1.Series["PM2.5"].Points.AddXY("2.12.", sr25);
-                this.chart1.Series["PM10"].Points.AddXY("2.12.", sr10);
-
-
+                chart1.Series["PM1"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                chart1.Series["PM2.5"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                chart1.Series["PM10"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            }
+            else
+            {
+                chart1.Series["PM1"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                chart1.Series["PM2.5"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+                chart1.Series["PM10"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
             }
         }
     }

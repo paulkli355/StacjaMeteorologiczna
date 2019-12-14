@@ -17,6 +17,7 @@ namespace MeteoWF
     {
         public MeteoDBEntities()
             : base("name=MeteoDBEntities")
+            //: base(@"Data Source=DELL\PAULINA;Initial Catalog=MeteoDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
         {
         }
     
