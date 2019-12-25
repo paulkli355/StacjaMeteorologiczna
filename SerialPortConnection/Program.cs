@@ -76,11 +76,11 @@ namespace SerialPortConnection
                         {
                             pm1 = 23;   //przeciętna wartość, która nie wpłynie na resztę wyników przy ich analizie
                         }
-                        if ((pm25 > 125) || (pm25 <= 0))
+                        if ((pm25 > 150) || (pm25 <= 0))
                         {
                             pm25 = 40;
                         }
-                        if ((pm10 > 150) || (pm10 <= 0))
+                        if ((pm10 > 200) || (pm10 <= 0))
                         {
                             pm10 = 45;
                         }
