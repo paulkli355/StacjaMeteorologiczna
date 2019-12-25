@@ -130,6 +130,7 @@
             this.pictureBox4.Size = new System.Drawing.Size(96, 96);
             this.pictureBox4.TabIndex = 9;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // dashboard
             // 

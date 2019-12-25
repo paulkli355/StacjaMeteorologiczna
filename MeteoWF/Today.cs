@@ -29,11 +29,11 @@ namespace MeteoWF
         {
             var temp = context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.Temperatura);
             double srtemp = Math.Round((double)temp, 1);
-            TempWar.Text = string.Format(srtemp.ToString() + " °C");
+            TempWar.Text = string.Format(srtemp.ToString() + "°C");
 
             var humid = context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.Wilgotnosc);
             double srhumid = Math.Round((double)humid, 1);
-            HumidWar.Text = string.Format(srhumid.ToString() + " %");
+            HumidWar.Text = string.Format(srhumid.ToString() + "%");
 
             var srednia1 = context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM1);
             double sr1 = Math.Round((double)srednia1, 1);
@@ -42,10 +42,35 @@ namespace MeteoWF
             var srednia25 = context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM25);
             double sr25 = Math.Round((double)srednia25, 1);
             PM25text.Text = string.Format(sr25.ToString() + " µg/m3");
+            if (sr25 <= 35) 
+            {
+                PM25text.ForeColor = System.Drawing.Color.Green;
+            }
+            if (sr25 <= 75)
+            {
+                PM25text.ForeColor = System.Drawing.Color.Orange;
+            }
+            else
+            {
+                PM25text.ForeColor = System.Drawing.Color.Red;
+            }
 
             var srednia10 = context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM10);
             double sr10 = Math.Round((double)srednia10,1);
             PM10text.Text = string.Format(sr10.ToString() + " µg/m3");
+
+            if (sr10 <= 50)
+            {
+                PM10text.ForeColor = System.Drawing.Color.Green;
+            }
+            if (sr10 <= 110)
+            {
+                PM10text.ForeColor = System.Drawing.Color.Orange;
+            }
+            else
+            {
+                PM10text.ForeColor = System.Drawing.Color.Red;
+            }
 
 
         }

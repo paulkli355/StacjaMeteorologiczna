@@ -7,8 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MindFusion.Charting;
-using MindFusion.Charting.WinForms;
+
 namespace MeteoWF
 {
     public partial class lastWeek : UserControl
@@ -17,19 +16,19 @@ namespace MeteoWF
         public lastWeek()
         {
             InitializeComponent();
-            //WyswietlWykresSlupkowy();
-            WyswietlWykresLiniowy();
+            WyswietlWykresSlupkowy();
+            //WyswietlWykresLiniowy();
         }
 
         private void lastWeek_Load(object sender, EventArgs e)
         {
             var temp = context.Pomiaries.Average(x => x.Temperatura);
             double srtemp = Math.Round((double)temp, 1);
-            TempWar.Text = string.Format(srtemp.ToString() + " °C");
+            TempWar.Text = string.Format(srtemp.ToString() + "°C");
 
             var humid = context.Pomiaries.Average(x => x.Wilgotnosc);
             double srhumid = Math.Round((double)humid, 1);
-            HumidWar.Text = string.Format(srhumid.ToString() + " %");
+            HumidWar.Text = string.Format(srhumid.ToString() + "%");
 
             var srednia1 = context.Pomiaries.Average(x => x.PM1);
             double sr1 = Math.Round((double)srednia1, 1);
@@ -38,10 +37,34 @@ namespace MeteoWF
             var srednia25 = context.Pomiaries.Average(x => x.PM25);
             double sr25 = Math.Round((double)srednia25, 1);
             PM25text.Text = string.Format(sr25.ToString() + " µg/m3");
+            if (sr25 <= 35)
+            {
+                PM25text.ForeColor = System.Drawing.Color.Green;
+            }
+            if (sr25 <= 75)
+            {
+                PM25text.ForeColor = System.Drawing.Color.Orange;
+            }
+            else
+            {
+                PM25text.ForeColor = System.Drawing.Color.Red;
+            }
 
             var srednia10 = context.Pomiaries.Average(x => x.PM10);
             double sr10 = Math.Round((double)srednia10, 1);
             PM10text.Text = string.Format(sr10.ToString() + " µg/m3");
+            if (sr10 <= 50)
+            {
+                PM10text.ForeColor = System.Drawing.Color.Green;
+            }
+            if (sr10 <= 110)
+            {
+                PM10text.ForeColor = System.Drawing.Color.Orange;
+            }
+            else
+            {
+                PM10text.ForeColor = System.Drawing.Color.Red;
+            }
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -56,7 +79,7 @@ namespace MeteoWF
 
         void WyswietlWykresSlupkowy()
         {
-            chart1.Update();
+            //chart1.Update();
             chart1.Series["PM1"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
             chart1.Series["PM2.5"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
             chart1.Series["PM10"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
@@ -72,6 +95,8 @@ namespace MeteoWF
             
 
         }
+
+        
 
         void WyswietlWykresLiniowy()
         {
@@ -95,11 +120,11 @@ namespace MeteoWF
         {
             if (checkBox1.Checked == true)
             {
-                WyswietlWykresSlupkowy();
+                WyswietlWykresLiniowy();
             }
             else
             {
-                WyswietlWykresLiniowy();
+                WyswietlWykresSlupkowy();
             }
         }
 
