@@ -38,19 +38,31 @@ namespace MeteoWF
             var srednia1 = context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM1);
             double sr1 = Math.Round((double)srednia1, 1);
             PM1text.Text = string.Format(sr1.ToString() + " µg/m3");
+            if (sr1 <= 35)
+            {
+                PM1text.ForeColor = System.Drawing.Color.Green;
+            }
+            if ((sr1 > 35) && (sr1 <= 75))
+            {
+                PM1text.ForeColor = System.Drawing.Color.Orange;
+            }
+            if (sr1 > 75)
+            {
+                PM1text.ForeColor = System.Drawing.Color.Red;
+            }
 
             var srednia25 = context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM25);
             double sr25 = Math.Round((double)srednia25, 1);
             PM25text.Text = string.Format(sr25.ToString() + " µg/m3");
-            if (sr25 <= 35) 
+            if (sr25 <= 35)
             {
                 PM25text.ForeColor = System.Drawing.Color.Green;
             }
-            if (sr25 <= 75)
+            if ((sr25 > 35) && (sr25 <= 75))
             {
                 PM25text.ForeColor = System.Drawing.Color.Orange;
             }
-            else
+            if (sr25 > 75)
             {
                 PM25text.ForeColor = System.Drawing.Color.Red;
             }
@@ -63,11 +75,11 @@ namespace MeteoWF
             {
                 PM10text.ForeColor = System.Drawing.Color.Green;
             }
-            if (sr10 <= 110)
+            if ((sr10 > 50) && (sr10 <= 110))
             {
                 PM10text.ForeColor = System.Drawing.Color.Orange;
             }
-            else
+            if (sr10 > 110)
             {
                 PM10text.ForeColor = System.Drawing.Color.Red;
             }

@@ -37,11 +37,21 @@ namespace MeteoWF
 
         private void Printbutton_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("This feature is not yet available! We are working on it", "We're sorry", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
-            {
+            try {
+
+                //MessageBox.Show("This feature is not yet available! We are working on it", "We're sorry", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (printPreviewDialog1.ShowDialog() == DialogResult.OK)
+                {
                 printDocument1.Print();
+                }
+            } 
+            catch (Exception) {
+
+                MessageBox.Show("An error has occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
+
         }
 
         string PrzygotowanieRaportu()
@@ -78,9 +88,15 @@ namespace MeteoWF
 
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            string text = PrzygotowanieRaportu();
-            e.Graphics.DrawString(text, new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new PointF(100, 100));
-            
+            try
+            {
+                string text = PrzygotowanieRaportu();
+                e.Graphics.DrawString(text, new Font("Arial", 14, FontStyle.Bold), Brushes.Black, new PointF(100, 100));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An error has occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void printPreviewControl1_Click(object sender, EventArgs e)
