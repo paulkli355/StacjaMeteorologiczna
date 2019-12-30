@@ -72,11 +72,11 @@ namespace SerialPortConnection
                         wilg = double.Parse(wartosci[4]);
                         //Thread.Sleep(1000);
 
-                        if ((pm1 > 100) ||(pm1 <= 0))
+                        if ((pm1 > 100) || (pm1 <= 0))
                         {
                             pm1 = 23;   //przeciętna wartość, która nie wpłynie na resztę wyników przy ich analizie
                         }
-                        if ((pm25 > 150) || (pm25 <= 0))
+                        if ((pm25 > 160) || (pm25 <= 0))
                         {
                             pm25 = 40;
                         }
