@@ -27,17 +27,61 @@ namespace MeteoWF
 
         private void Today_Load(object sender, EventArgs e)
         {
-            var temp = context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.Temperatura);
-            double srtemp = Math.Round((double)temp, 1);
-            TempWar.Text = string.Format(srtemp.ToString() + "°C");
+            var lastid = context.Pomiaries.Select(x => x.PomiarID).Max();
+            //var lastdate = context.Pomiaries.Where(x => x.PomiarID == lastid).Select(x => x.DataCzas);
+            
+            double sr1;
+            double sr25;
+            double sr10;
 
-            var humid = context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.Wilgotnosc);
-            double srhumid = Math.Round((double)humid, 1);
-            HumidWar.Text = string.Format(srhumid.ToString() + "%");
+            try
+            {
+                var temp = context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.Temperatura);
+                double srtemp = Math.Round((double)temp, 1);
+                TempWar.Text = string.Format(srtemp.ToString() + "°C");
 
-            var srednia1 = context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM1);
-            double sr1 = Math.Round((double)srednia1, 1);
-            PM1text.Text = string.Format(sr1.ToString() + " µg/m3");
+                var humid = context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.Wilgotnosc);
+                double srhumid = Math.Round((double)humid, 1);
+                HumidWar.Text = string.Format(srhumid.ToString() + "%");
+
+                var srednia1 = context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM1);
+                sr1 = Math.Round((double)srednia1, 1);
+                PM1text.Text = string.Format(sr1.ToString() + " µg/m3");
+
+                var srednia25 = context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM25);
+                sr25 = Math.Round((double)srednia25, 1);
+                PM25text.Text = string.Format(sr25.ToString() + " µg/m3");
+
+                var srednia10 = context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM10);
+                sr10 = Math.Round((double)srednia10, 1);
+                PM10text.Text = string.Format(sr10.ToString() + " µg/m3");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("There's no today's data in attached database. Previous data will be shown.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var temp = context.Pomiaries.Where(x => x.PomiarID == lastid).Average(x => x.Temperatura);
+                double srtemp = Math.Round((double)temp, 1);
+                TempWar.Text = string.Format(srtemp.ToString() + "°C");
+
+                var humid = context.Pomiaries.Where(x => x.PomiarID == lastid).Average(x => x.Wilgotnosc);
+                double srhumid = Math.Round((double)humid, 1);
+                HumidWar.Text = string.Format(srhumid.ToString() + "%");
+
+                var srednia1 = context.Pomiaries.Where(x => x.PomiarID == lastid).Average(x => x.PM1);
+                sr1 = Math.Round((double)srednia1, 1);
+                PM1text.Text = string.Format(sr1.ToString() + " µg/m3");
+                
+                var srednia25 = context.Pomiaries.Where(x => x.PomiarID == lastid).Average(x => x.PM25);
+                sr25 = Math.Round((double)srednia25, 1);
+                PM25text.Text = string.Format(sr25.ToString() + " µg/m3");
+
+                var srednia10 = context.Pomiaries.Where(x => x.PomiarID == lastid).Average(x => x.PM10);
+                sr10 = Math.Round((double)srednia10, 1);
+                PM10text.Text = string.Format(sr10.ToString() + " µg/m3");
+
+            }
+
+            //ustawienie kolorow dla PM1
             if (sr1 <= 35)
             {
                 PM1text.ForeColor = System.Drawing.Color.Green;
@@ -51,9 +95,7 @@ namespace MeteoWF
                 PM1text.ForeColor = System.Drawing.Color.Red;
             }
 
-            var srednia25 = context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM25);
-            double sr25 = Math.Round((double)srednia25, 1);
-            PM25text.Text = string.Format(sr25.ToString() + " µg/m3");
+            //ustawienie kolorow dla PM2,5
             if (sr25 <= 35)
             {
                 PM25text.ForeColor = System.Drawing.Color.Green;
@@ -67,10 +109,7 @@ namespace MeteoWF
                 PM25text.ForeColor = System.Drawing.Color.Red;
             }
 
-            var srednia10 = context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM10);
-            double sr10 = Math.Round((double)srednia10,1);
-            PM10text.Text = string.Format(sr10.ToString() + " µg/m3");
-
+            //ustawienie kolorow dla PM10
             if (sr10 <= 50)
             {
                 PM10text.ForeColor = System.Drawing.Color.Green;
@@ -83,7 +122,6 @@ namespace MeteoWF
             {
                 PM10text.ForeColor = System.Drawing.Color.Red;
             }
-
 
         }
 
@@ -99,17 +137,30 @@ namespace MeteoWF
 
         void WyswietlWykres()
         {
-            var srednia1 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM1), 2);
-            this.chart1.Series["Concentration"].Points.AddXY("PM1", srednia1);
+            var lastid = context.Pomiaries.Select(x => x.PomiarID).Max();
+            try
+            {
+                var srednia1 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM1), 2);
+                this.chart1.Series["Concentration"].Points.AddXY("PM1", srednia1);
 
-            var srednia25 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM25), 2);
-            this.chart1.Series["Concentration"].Points.AddXY("PM2,5", srednia25);
+                var srednia25 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM25), 2);
+                this.chart1.Series["Concentration"].Points.AddXY("PM2,5", srednia25);
 
-            var srednia10 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM10), 2);
-            this.chart1.Series["Concentration"].Points.AddXY("PM10", srednia10);
+                var srednia10 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM10), 2);
+                this.chart1.Series["Concentration"].Points.AddXY("PM10", srednia10);
+            }
+            catch (Exception)
+            {
+                var srednia1 = Math.Round((double)context.Pomiaries.Where(x => x.PomiarID == lastid).Average(x => x.PM1), 2);
+                this.chart1.Series["Concentration"].Points.AddXY("PM1", srednia1);
+
+                var srednia25 = Math.Round((double)context.Pomiaries.Where(x => x.PomiarID == lastid).Average(x => x.PM25), 2);
+                this.chart1.Series["Concentration"].Points.AddXY("PM2,5", srednia25);
+
+                var srednia10 = Math.Round((double)context.Pomiaries.Where(x => x.PomiarID == lastid).Average(x => x.PM10), 2);
+                this.chart1.Series["Concentration"].Points.AddXY("PM10", srednia10);
+            }
         }
 
-        
-        
     }
 }

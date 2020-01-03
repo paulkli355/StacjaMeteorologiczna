@@ -56,11 +56,25 @@ namespace MeteoWF
 
         string PrzygotowanieRaportu()
         {
-            var temp = Math.Round((double)(context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.Temperatura)), 1);
-            var humid = Math.Round((double)(context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.Wilgotnosc)), 1);
-            var srednia1 = Math.Round((double)(context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM1)), 2);
-            var srednia25 = Math.Round((double)(context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM25)), 2);
-            var srednia10 = Math.Round((double)(context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM10)), 2);
+            var lastid = context.Pomiaries.Select(x => x.PomiarID).Max();
+            double temp, humid, srednia1, srednia25, srednia10;
+
+            try
+            {
+                temp = Math.Round((double)(context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.Temperatura)), 1);
+                humid = Math.Round((double)(context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.Wilgotnosc)), 1);
+                srednia1 = Math.Round((double)(context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM1)), 2);
+                srednia25 = Math.Round((double)(context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM25)), 2);
+                srednia10 = Math.Round((double)(context.Pomiaries.Where(x => x.DataCzas.Day == (DateTime.Now).Day - 0).Average(x => x.PM10)), 2);
+            }
+            catch (Exception)
+            {
+                temp = Math.Round((double)(context.Pomiaries.Where(x => x.PomiarID == lastid).Average(x => x.Temperatura)), 1);
+                humid = Math.Round((double)(context.Pomiaries.Where(x => x.PomiarID == lastid).Average(x => x.Wilgotnosc)), 1);
+                srednia1 = Math.Round((double)(context.Pomiaries.Where(x => x.PomiarID == lastid).Average(x => x.PM1)), 2);
+                srednia25 = Math.Round((double)(context.Pomiaries.Where(x => x.PomiarID == lastid).Average(x => x.PM25)), 2);
+                srednia10 = Math.Round((double)(context.Pomiaries.Where(x => x.PomiarID == lastid).Average(x => x.PM10)), 2);
+            }
 
             var te = Math.Round((double)(context.Pomiaries.Average(x => x.Temperatura)), 1);
             var hd = Math.Round((double)(context.Pomiaries.Average(x => x.Wilgotnosc)), 1);
