@@ -128,13 +128,13 @@ namespace SerialPortConnection
                     }
 
 
-
+                    
                     //SELECT from MeteoDB database
                     //Pomiary pomiar2 = context.Pomiaries.FirstOrDefault(x => x.Temperatura >= 0);
                     //Console.WriteLine(pomiar2.PomiarID);
                     //Console.Read();
 
-                    
+
 
                     //ALTERING data
                     //pomiar2.Wilgotnosc = 72;
