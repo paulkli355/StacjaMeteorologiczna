@@ -17,14 +17,5 @@ namespace MeteoWF
             InitializeComponent();
         }
 
-        private void normyPM10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox4_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

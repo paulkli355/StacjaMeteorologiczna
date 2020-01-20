@@ -42,7 +42,7 @@
             this.closePic = new System.Windows.Forms.PictureBox();
             this.openNowlabel = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.lastWeek1 = new MeteoWF.lastWeek();
+            this.lastWeek1 = new MeteoWF.historicData();
             this.today1 = new MeteoWF.Today();
             this.dashboard1 = new MeteoWF.dashboard();
             this.generateReport1 = new MeteoWF.generateReport();
@@ -286,7 +286,7 @@
         private System.Windows.Forms.PictureBox minimisePic;
         private dashboard dashboard1;
         private Today today1;
-        private lastWeek lastWeek1;
+        private historicData lastWeek1;
         private generateReport generateReport1;
     }
 }

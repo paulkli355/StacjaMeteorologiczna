@@ -78,9 +78,9 @@ namespace MeteoWF
 
             var te = Math.Round((double)(context.Pomiaries.Average(x => x.Temperatura)), 1);
             var hd = Math.Round((double)(context.Pomiaries.Average(x => x.Wilgotnosc)), 1);
-            var sr1 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Year == 2019).Average(x => x.PM1), 2);
-            var sr25 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Year == 2019).Average(x => x.PM25), 2);
-            var sr10 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Year == 2019).Average(x => x.PM10), 2);
+            var sr1 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Year == 2019 || x.DataCzas.Year == 2020).Average(x => x.PM1), 2);
+            var sr25 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Year == 2019 || x.DataCzas.Year == 2020).Average(x => x.PM25), 2);
+            var sr10 = Math.Round((double)context.Pomiaries.Where(x => x.DataCzas.Year == 2019 || x.DataCzas.Year == 2020).Average(x => x.PM10), 2);
             string text1 = string.Format("AIR QUALITY REPORT OF " + DateTime.Now + '\n' + '\n' +
                 "The average temperature today is " + temp + "°C, while the humidity" + '\n' + "remains at an average level of " + humid + "%." + '\n' +
                 "The average concentration of suspended dust was respectively: " + '\n');

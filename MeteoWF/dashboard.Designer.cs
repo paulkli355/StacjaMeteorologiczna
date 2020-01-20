@@ -73,7 +73,7 @@
             this.normyPM10.Size = new System.Drawing.Size(181, 17);
             this.normyPM10.TabIndex = 3;
             this.normyPM10.Text = "permissible level 50 μg/m3,";
-            this.normyPM10.Click += new System.EventHandler(this.normyPM10_Click);
+            //this.normyPM10.Click += new System.EventHandler(this.normyPM10_Click);
             // 
             // label2
             // 
@@ -130,7 +130,7 @@
             this.pictureBox4.Size = new System.Drawing.Size(96, 96);
             this.pictureBox4.TabIndex = 9;
             this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            //this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // dashboard
             // 

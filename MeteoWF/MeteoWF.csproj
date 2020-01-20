@@ -88,11 +88,11 @@
     <Compile Include="generateReport.Designer.cs">
       <DependentUpon>generateReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="lastWeek.cs">
+    <Compile Include="historicData.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="lastWeek.Designer.cs">
-      <DependentUpon>lastWeek.cs</DependentUpon>
+    <Compile Include="historicData.Designer.cs">
+      <DependentUpon>historicData.cs</DependentUpon>
     </Compile>
     <Compile Include="MeteoModel1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -129,8 +129,8 @@
     <EmbeddedResource Include="generateReport.resx">
       <DependentUpon>generateReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="lastWeek.resx">
-      <DependentUpon>lastWeek.cs</DependentUpon>
+    <EmbeddedResource Include="historicData.resx">
+      <DependentUpon>historicData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
